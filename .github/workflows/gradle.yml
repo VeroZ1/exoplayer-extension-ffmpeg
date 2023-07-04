@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       ANDROID_NDK: "21.4.7075529"
-      EXOPLAYER: "r2.15.1"
+      EXOPLAYER: "dev_ffmpeg_video_renderer"
       FFMPEG: "release/4.4"
     steps:
     - uses: actions/checkout@v2
@@ -27,7 +27,7 @@ jobs:
         export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
         echo y | sdkmanager --update >> log.txt
         echo y | sdkmanager --install "ndk;$ANDROID_NDK" >> log.txt
-        git clone -b $EXOPLAYER https://github.com/google/ExoPlayer.git
+        git clone -b $EXOPLAYER https://github.com/rabbitknight/ExoPlayer.git
         export FFMPEG_EXT_PATH=$PWD/ExoPlayer/extensions/ffmpeg/src/main
         export HOST_PLATFORM="linux-x86_64"
         export ENABLED_DECODERS=(vorbis opus aac ac3 eac3 aac_latm flv h264 pcm_mulaw pcm_alaw wmav* mp3* mp2* vp6f flac alac hevc vp8 vp9 mpeg2video mpegvideo)
